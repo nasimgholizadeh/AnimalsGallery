@@ -24,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.zolad.zoominimageview.ZoomInImageView;
 
 import org.json.JSONException;
@@ -61,6 +63,46 @@ public class MainActivity extends AppCompatActivity {
 
         btnSave.setEnabled(false); //disable btnSave
         btnFavourite.setEnabled(false); //disable btnFavourite
+
+        //fox button on click listener
+        btnFox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
+                getFoxImage(); //call function for get fox images when btnFox clicked
+                txtChooseAnimal.setText("روباه"); //change textView text to selected animal
+                txtChooseAnimal.setTextColor(Color.BLACK);
+                progressBar.setVisibility(View.VISIBLE); //show progress bar
+                btnSave.setEnabled(true); //enable btnSave
+                btnFavourite.setEnabled(true); //enable btnFavourite
+            }
+        });
+        //dog button on click listener
+        btnDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
+                getDogImage(); //call function for get dog images when btnDog clicked
+                txtChooseAnimal.setText("سگ"); //change textView text to selected animal
+                txtChooseAnimal.setTextColor(Color.BLACK);
+                progressBar.setVisibility(View.VISIBLE); //show progress bar
+                btnSave.setEnabled(true); //enable btnSave
+                btnFavourite.setEnabled(true); //enable btnFavourite
+            }
+        });
+        //cat button on click listener
+        btnCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
+                getCatImage(); //call function for get cat images when btnCat clicked
+                txtChooseAnimal.setText("گربه"); //change textView text to selected animal
+                txtChooseAnimal.setTextColor(Color.BLACK);
+                progressBar.setVisibility(View.VISIBLE); //show progress bar
+                btnSave.setEnabled(true); //enable btnSave
+                btnFavourite.setEnabled(true); //enable btnFavourite
+            }
+        });
     }
 
     //init views
