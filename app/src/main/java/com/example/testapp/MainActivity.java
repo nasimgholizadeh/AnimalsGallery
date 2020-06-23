@@ -1,11 +1,15 @@
 package com.example.testapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +34,14 @@ import com.zolad.zoominimageview.ZoomInImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +75,37 @@ public class MainActivity extends AppCompatActivity {
 
         btnSave.setEnabled(false); //disable btnSave
         btnFavourite.setEnabled(false); //disable btnFavourite
+
+        //save imageView image in gallery button
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StoragePermission(); //get read/write permission (call permission function)
+
+                bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+
+                String time = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
+                File path = Environment.getExternalStorageDirectory();
+                File dir = new File(path + "/DCIM/حیوانات");
+                dir.mkdirs();
+                String imageName = time + ".jpg";
+                File file = new File(dir, imageName);
+                OutputStream out;
+                try {
+                    out = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                    out.flush();
+                    out.close();
+                    Toasty.success(MainActivity.this,"ذخیره شد.",Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toasty.error(MainActivity.this,"خطایی در ذخیره سازی رخ داده است!!!",Toast.LENGTH_LONG).show();
+                }
+                //show image in gallery
+                Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                intent.setData(Uri.fromFile(file));
+                sendBroadcast(intent);
+            }
+        });
 
         //fox button on click listener
         btnFox.setOnClickListener(new View.OnClickListener() {
