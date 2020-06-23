@@ -1,18 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@android:color/darker_gray">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/m_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#d65179"/>
     <TextView
+        android:id="@+id/txt_choose_animal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:text="برای شروع یکی از حیوانات را انتخاب کنید."
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/large_text_size"
+        android:layout_marginBottom="12dp"
+        android:layout_below="@id/m_toolbar"/>
+    <com.zolad.zoominimageview.ZoomInImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_below="@id/txt_choose_animal"
+        android:scaleType="fitCenter"
+        android:layout_above="@id/LL2"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/LL2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@id/LL">
 
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ذخیره"
+            android:background="@drawable/buttons_theme"
+            android:layout_marginTop="@dimen/standard_margin"/>
+        <Button
+            android:id="@+id/btn_favourite"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="افزودن به علاقه مندی ها"
+            android:background="@drawable/buttons_theme"
+            android:layout_marginTop="@dimen/standard_margin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin">
+
+        <Button
+            android:id="@+id/btn_fox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="روباه"
+            android:background="@drawable/buttons_theme"/>
+        <Button
+            android:id="@+id/btn_dog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="سگ"
+            android:background="@drawable/buttons_theme"/>
+        <Button
+            android:id="@+id/btn_cat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="گربه"
+            android:background="@drawable/buttons_theme"/>
+    </LinearLayout>
 </RelativeLayout>
