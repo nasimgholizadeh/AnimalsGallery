@@ -271,4 +271,19 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
+
+    //press back again to exit
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime+2000>System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast=Toasty.info(getBaseContext(),"لطفا کلید بازگشت را مجددا فشار دهید.",Toast.LENGTH_LONG);
+            backToast.show();
+        }
+        backPressedTime=System.currentTimeMillis();
+    }
 }
