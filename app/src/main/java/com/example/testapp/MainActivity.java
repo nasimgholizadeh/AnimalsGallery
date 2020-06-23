@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
+
+        setSupportActionBar(mToolbar); //toolbar menu
     }
 
     //init views
