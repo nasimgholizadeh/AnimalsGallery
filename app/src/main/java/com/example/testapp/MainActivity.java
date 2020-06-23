@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         setSupportActionBar(mToolbar); //toolbar menu
+
+        btnSave.setEnabled(false); //disable btnSave
+        btnFavourite.setEnabled(false); //disable btnFavourite
     }
 
     //init views
