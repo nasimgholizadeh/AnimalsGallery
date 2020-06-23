@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/favouriteItem"
+        android:title="لیست علاقه مندی ها"/>
+    <item
+        android:id="@+id/aboutItem"
+        android:title="درباره"/>
+    <item
+        android:id="@+id/exitItem"
+        android:title="خروج"/>
+</menu>
