@@ -40,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
         StoragePermission(); //get read/write permission (call permission function)
 
         setContentView(R.layout.activity_main);
+
+        initViews();
+    }
+
+    //init views
+    private void initViews() {
+        btnFox=findViewById(R.id.btn_fox);
+        btnDog=findViewById(R.id.btn_dog);
+        btnCat=findViewById(R.id.btn_cat);
+        imageView=findViewById(R.id.imageView);
+        txtChooseAnimal=findViewById(R.id.txt_choose_animal);
+        progressBar=findViewById(R.id.progressBar);
+        btnSave=findViewById(R.id.btn_save);
+        mToolbar=findViewById(R.id.m_toolbar);
+        btnFavourite =findViewById(R.id.btn_favourite);
     }
 
     //function for get read/write permission
