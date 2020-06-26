@@ -185,8 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse: "+response.toString());
                 try {
                     image=response.getString("image"); //get json object
-                    /*put json object in imageView with Glide library
-                    glide library supports gif*/
+
                     Glide.with(imageView).load(image).into(imageView);
                     progressBar.setVisibility(View.INVISIBLE); //hide progress bar
                 } catch (JSONException e) {
@@ -218,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse: "+response.toString());
                 try {
                     image=response.getString("url");
-                    Glide.with(imageView).load(image).into(imageView); //put json object in imageView with Glide library
+                    Glide.with(imageView).load(image).into(imageView); 
                     progressBar.setVisibility(View.INVISIBLE); //hide progress bar
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -248,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     image=response.getString("file");
-                    Glide.with(imageView).load(image).into(imageView); //put json object in imageView with Glide library
+                    Glide.with(imageView).load(image).into(imageView);
                     progressBar.setVisibility(View.INVISIBLE); //hide progress bar
                 } catch (JSONException e) {
                     e.printStackTrace();
