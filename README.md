@@ -1,4 +1,5 @@
 # Display random images of cats, foxes and dogs.
+- Save images in gallery.
 
 ![image 1](https://github.com/nasimgholizadeh/AnimalsGallery/blob/master/img1.jpg?raw=true)
 
