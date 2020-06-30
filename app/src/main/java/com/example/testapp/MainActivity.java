@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private Button btnFox,btnDog,btnCat,btnSave,btnFavourite;
+    private Button btnFox,btnDog,btnCat,btnSave;
     private ZoomInImageView imageView;
     private TextView txtChooseAnimal;
     private ProgressBar progressBar;
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar); //toolbar menu
 
         btnSave.setEnabled(false); //disable btnSave
-        btnFavourite.setEnabled(false); //disable btnFavourite
 
         //save imageView image in gallery button
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String time = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
                 File path = Environment.getExternalStorageDirectory();
-                File dir = new File(path + "/DCIM/حیوانات");
+                File dir = new File(path + "/DCIM/Animals");
                 dir.mkdirs();
                 String imageName = time + ".jpg";
                 File file = new File(dir, imageName);
@@ -96,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                     out.flush();
                     out.close();
-                    Toasty.success(MainActivity.this,"ذخیره شد.",Toast.LENGTH_LONG).show();
+                    Toasty.success(MainActivity.this,"Saved.",Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    Toasty.error(MainActivity.this,"خطایی در ذخیره سازی رخ داده است!!!",Toast.LENGTH_LONG).show();
+                    Toasty.error(MainActivity.this,"An error occurred in storage!!!",Toast.LENGTH_LONG).show();
                 }
                 //show image in gallery
                 Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -113,11 +112,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
                 getFoxImage(); //call function for get fox images when btnFox clicked
-                txtChooseAnimal.setText("روباه"); //change textView text to selected animal
+                txtChooseAnimal.setText("Fox"); //change textView text to selected animal
                 txtChooseAnimal.setTextColor(Color.BLACK);
                 progressBar.setVisibility(View.VISIBLE); //show progress bar
                 btnSave.setEnabled(true); //enable btnSave
-                btnFavourite.setEnabled(true); //enable btnFavourite
             }
         });
         //dog button on click listener
@@ -126,11 +124,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
                 getDogImage(); //call function for get dog images when btnDog clicked
-                txtChooseAnimal.setText("سگ"); //change textView text to selected animal
+                txtChooseAnimal.setText("Dog"); //change textView text to selected animal
                 txtChooseAnimal.setTextColor(Color.BLACK);
                 progressBar.setVisibility(View.VISIBLE); //show progress bar
                 btnSave.setEnabled(true); //enable btnSave
-                btnFavourite.setEnabled(true); //enable btnFavourite
             }
         });
         //cat button on click listener
@@ -139,11 +136,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 YoYo.with(Techniques.Pulse).duration(1000).repeat(1).playOn(imageView); //animation on imageView
                 getCatImage(); //call function for get cat images when btnCat clicked
-                txtChooseAnimal.setText("گربه"); //change textView text to selected animal
+                txtChooseAnimal.setText("Cat"); //change textView text to selected animal
                 txtChooseAnimal.setTextColor(Color.BLACK);
                 progressBar.setVisibility(View.VISIBLE); //show progress bar
                 btnSave.setEnabled(true); //enable btnSave
-                btnFavourite.setEnabled(true); //enable btnFavourite
             }
         });
     }
@@ -158,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         btnSave=findViewById(R.id.btn_save);
         mToolbar=findViewById(R.id.m_toolbar);
-        btnFavourite =findViewById(R.id.btn_favourite);
     }
 
     //function for get read/write permission
@@ -185,8 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse: "+response.toString());
                 try {
                     image=response.getString("image"); //get json object
-                    /*put json object in imageView with Glide library
-                    glide library supports gif*/
+                    //put json object in imageView with Glide library
                     Glide.with(imageView).load(image).into(imageView);
                     progressBar.setVisibility(View.INVISIBLE); //hide progress bar
                 } catch (JSONException e) {
@@ -197,11 +191,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "onErrorResponse: "+error.toString());
-                txtChooseAnimal.setText("لطفا از اتصال دستگاه خود به اینترنت مطمئن شوید.");
+                txtChooseAnimal.setText("You're offline.");
                 progressBar.setVisibility(View.GONE);
                 txtChooseAnimal.setTextColor(Color.RED);
                 btnSave.setEnabled(false);
-                btnFavourite.setEnabled(false);
             }
         });
         request.setRetryPolicy(new DefaultRetryPolicy(8000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -228,11 +221,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "onErrorResponse: "+error.toString());
-                txtChooseAnimal.setText("لطفا از اتصال دستگاه خود به اینترنت مطمئن شوید.");
+                txtChooseAnimal.setText("You're offline.");
                 progressBar.setVisibility(View.GONE);
                 txtChooseAnimal.setTextColor(Color.RED);
                 btnSave.setEnabled(false);
-                btnFavourite.setEnabled(false);
             }
         });
         request.setRetryPolicy(new DefaultRetryPolicy(8000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -259,11 +251,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "onErrorResponse: "+error.toString());
-                txtChooseAnimal.setText("لطفا از اتصال دستگاه خود به اینترنت مطمئن شوید.");
+                txtChooseAnimal.setText("You're offline.");
                 progressBar.setVisibility(View.GONE);
                 txtChooseAnimal.setTextColor(Color.RED);
                 btnSave.setEnabled(false);
-                btnFavourite.setEnabled(false);
             }
         });
         request.setRetryPolicy(new DefaultRetryPolicy(8000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -281,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         else {
-            backToast=Toasty.info(getBaseContext(),"لطفا کلید بازگشت را مجددا فشار دهید.",Toast.LENGTH_LONG);
+            backToast=Toasty.info(getBaseContext(),"Press back again to exit.",Toast.LENGTH_LONG);
             backToast.show();
         }
         backPressedTime=System.currentTimeMillis();

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/standard_margin"
-        android:text="برای شروع یکی از حیوانات را انتخاب کنید."
+        android:text="Choose one of the following animals."
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:textSize="@dimen/large_text_size"
@@ -49,16 +49,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ذخیره"
+            android:text="Save"
             android:background="@drawable/buttons_theme"
-            android:layout_marginTop="@dimen/standard_margin"/>
-        <Button
-            android:id="@+id/btn_favourite"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="افزودن به علاقه مندی ها"
-            android:background="@drawable/buttons_theme"
+            android:textAllCaps="false"
             android:layout_marginTop="@dimen/standard_margin"/>
     </LinearLayout>
 
@@ -77,21 +70,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="روباه"
+            android:text="Fox"
+            android:textAllCaps="false"
             android:background="@drawable/buttons_theme"/>
         <Button
             android:id="@+id/btn_dog"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="سگ"
+            android:text="Dog"
+            android:textAllCaps="false"
             android:background="@drawable/buttons_theme"/>
         <Button
             android:id="@+id/btn_cat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="گربه"
+            android:text="Cat"
+            android:textAllCaps="false"
             android:background="@drawable/buttons_theme"/>
     </LinearLayout>
 </RelativeLayout>
