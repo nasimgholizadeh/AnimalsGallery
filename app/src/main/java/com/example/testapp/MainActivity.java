@@ -180,11 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse: "+response.toString());
                 try {
                     image=response.getString("image"); //get json object
-<<<<<<< HEAD
                     //put json object in imageView with Glide library
-=======
-
->>>>>>> eaceff723c00b338e721aa9a31c47f9314637a24
                     Glide.with(imageView).load(image).into(imageView);
                     progressBar.setVisibility(View.INVISIBLE); //hide progress bar
                 } catch (JSONException e) {
