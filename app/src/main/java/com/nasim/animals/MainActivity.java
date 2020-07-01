@@ -1,4 +1,4 @@
-package com.example.testapp;
+package com.nasim.animals;
 
 import android.Manifest;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.example.testapp;
+package com.nasim.animals;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
